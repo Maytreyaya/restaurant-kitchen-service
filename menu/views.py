@@ -32,7 +32,6 @@ def index(request):
 
 class DishListView(generic.ListView):
     model = Dish
-    queryset = Dish.objects.select_related("dish_type")
     paginate_by = 7
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -49,7 +48,7 @@ class DishListView(generic.ListView):
     def get_queryset(self):
         form = DishSearchForm(self.request.GET)
         if form.is_valid():
-            return Dish.objects.filter(
+            return Dish.objects.select_related("dish_type").filter(
                 name__icontains=form.cleaned_data["name"]
             )
 
@@ -85,6 +84,7 @@ class DishTypeListView(generic.ListView):
 class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
     model = DishType
     template_name = "menu/dish_type_detail.html"
+    queryset = DishType.objects.all().prefetch_related("dish_set__cookers")
 
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
