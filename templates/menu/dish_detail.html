@@ -3,15 +3,15 @@
 {% block content %}
   <h1>
     {{ dish.name }}
-{#    <a href="{% url 'taxi:car-delete' pk=car.id %}" class="btn btn-danger link-to-page">#}
-{#      Delete#}
-{#    </a>#}
-{##}
-{#    <a href="{% url 'taxi:car-update' pk=car.id %}" class="btn btn-secondary link-to-page">#}
-{#      Update#}
-{#    </a>#}
+    <a href="{% url 'menu:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'menu:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
   </h1>
-  <strong><i><p>Country of the Dish: {{ dish.dish_type }}</p></i></strong>
+  <strong><i><p>Traditional country food: {{ dish.dish_type }}</p></i></strong>
   <h1>
   <h5>{{ dish.description }}</h5>
     <h3>Cookers</h3>

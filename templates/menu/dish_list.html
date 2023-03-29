@@ -4,10 +4,12 @@
 {% block content %}
   <h1>
      Menu
+  </h1>
+  <h5>
     <a href="{% url 'menu:dish-create' %}" class="btn btn-primary link-to-page">
       Create
     </a>
-  </h1>
+  </h5>
 {#  <form action="" method="get" class="form-inline">#}
 {#    {{ search_form|crispy }}#}
 {#    <input type="submit" value="🔎">#}
@@ -18,8 +20,8 @@
       <tr>
         <th>Name</th>
         <th>Price</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th>Type</th>
+{#        <th>Delete</th>#}
       </tr>
 
       {% for dish in dish_list %}
@@ -31,16 +33,14 @@
               {{ dish.price }}
           </td>
           <td>
-              <a href="{% url 'menu:dish-update' pk=dish.id %}">
-                Update
-              </a>
+              {{ dish.dish_type }}
           </td>
-            <td>
-              <a style="color: red"
-                href="{% url 'menu:dish-delete' pk=dish.id %}">
-                Delete
-              </a>
-            </td>
+{#            <td>#}
+{#              <a style="color: red"#}
+{#                href="{% url 'menu:dish-delete' pk=dish.id %}">#}
+{#                Delete#}
+{#              </a>#}
+{#            </td>#}
         </tr>
       {% endfor %}
     </table>
