@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+     Menu
+    <a href="{% url 'menu:dish-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+{#  <form action="" method="get" class="form-inline">#}
+{#    {{ search_form|crispy }}#}
+{#    <input type="submit" value="🔎">#}
+{#  </form>#}
+
+  {% if dish_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for dish in dish_list %}
+        <tr>
+          <td>
+            <a href="{% url 'menu:dish-detail' pk=dish.id%}">{{ dish.name }}</a>
+          </td>
+          <td>
+              {{ dish.price }}
+          </td>
+          <td>
+              <a href="{% url 'menu:dish-update' pk=dish.id %}">
+                Update
+              </a>
+          </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'menu:dish-delete' pk=dish.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no manufacturers in the service.</p>
+  {% endif %}
+{% endblock %}

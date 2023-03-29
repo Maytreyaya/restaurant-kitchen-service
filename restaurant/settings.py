@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "debug_toolbar",
+    "crispy_forms",
+    "crispy_bootstrap4",
     "menu",
 ]
 
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "restaurant.urls"
@@ -106,6 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 AUTH_USER_MODEL = "menu.Cook"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

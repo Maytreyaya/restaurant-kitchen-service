@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ dish.name }}
+{#    <a href="{% url 'taxi:car-delete' pk=car.id %}" class="btn btn-danger link-to-page">#}
+{#      Delete#}
+{#    </a>#}
+{##}
+{#    <a href="{% url 'taxi:car-update' pk=car.id %}" class="btn btn-secondary link-to-page">#}
+{#      Update#}
+{#    </a>#}
+  </h1>
+  <strong><i><p>Country of the Dish: {{ dish.dish_type }}</p></i></strong>
+  <h1>
+  <h5>{{ dish.description }}</h5>
+    <h3>Cookers</h3>
+{##}
+{#    {% if car in user.cars.all %}#}
+{#      <a href="{% url 'taxi:toggle-car-assign' pk=car.id %}" class="btn btn-danger link-to-page">#}
+{#        Delete me from this car#}
+{#      </a>#}
+{#    {% else %}#}
+{#      <a href="{% url 'taxi:toggle-car-assign' pk=car.id %}" class="btn btn-success link-to-page">#}
+{#        Assign me from this car#}
+{#      </a>#}
+{#    {% endif %}#}
+{##}
+  </h1>
+  <hr>
+  <ul>
+    {% for cook in dish.cookers.all %}
+      <li>{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
