@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Delete this Dish Country Type: {{ dishtype.name }}?</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <a class="btn btn-success" href="{% url 'menu:dish-list' %}">No!</a>
+  </form>
+{% endblock %}

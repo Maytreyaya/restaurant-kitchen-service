@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ dishtype.name }}
+    <a href="{% url 'menu:dish-type-delete' pk=dishtype.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'menu:dish-type-update' pk=dishtype.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+  <hr>
+  <ul>
+    {% for dish in dishtype.dish_set.all %}
+      <strong><p><li>{{ dish.name }}</li> </p> </strong>
+      <i><p> {{ dish.description }} </p></i>
+      <strong>Cookers:</strong>
+      {% for cook in dish.cookers.all %}
+        <p>{{ cook }}</p>
+
+      {% endfor %}
+
+    {% endfor %}
+  </ul>
+{% endblock %}

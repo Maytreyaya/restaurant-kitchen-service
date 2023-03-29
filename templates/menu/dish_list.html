@@ -21,7 +21,6 @@
         <th>Name</th>
         <th>Price</th>
         <th>Type</th>
-{#        <th>Delete</th>#}
       </tr>
 
       {% for dish in dish_list %}
@@ -35,17 +34,11 @@
           <td>
               {{ dish.dish_type }}
           </td>
-{#            <td>#}
-{#              <a style="color: red"#}
-{#                href="{% url 'menu:dish-delete' pk=dish.id %}">#}
-{#                Delete#}
-{#              </a>#}
-{#            </td>#}
         </tr>
       {% endfor %}
     </table>
 
   {% else %}
-      <p>There are no manufacturers in the service.</p>
+      <p>There are no dishes available.</p>
   {% endif %}
 {% endblock %}
