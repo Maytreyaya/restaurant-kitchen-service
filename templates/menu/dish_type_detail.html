@@ -1,6 +1,7 @@
-{% extends "base.html" %}
+{% extends "bassse.html" %}
 
 {% block content %}
+  <div class="mx-auto p-7" style="width:600px">
   <h1>
     {{ dishtype.name }}
     <a href="{% url 'menu:dish-type-delete' pk=dishtype.id %}" class="btn btn-danger link-to-page">
@@ -24,4 +25,5 @@
 
     {% endfor %}
   </ul>
+  </div>
 {% endblock %}

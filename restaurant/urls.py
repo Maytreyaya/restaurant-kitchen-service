@@ -18,9 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from menu.views import index
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("menu.urls", namespace="menu")),
     path("__debug__/", include("debug_toolbar.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path("accounts/profile/", index),
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

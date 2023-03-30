@@ -31,6 +31,9 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+ASSETS_ROOT = "/static/assets"
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -70,6 +73,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "menu.context_processors.cfg_assets_root",
             ],
         },
     },

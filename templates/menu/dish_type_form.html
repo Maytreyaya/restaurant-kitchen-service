@@ -1,7 +1,8 @@
-{% extends "base.html" %}
+{% extends "bassse.html" %}
 {% load crispy_forms_filters %}
 
 {% block content %}
+<div class="mx-auto p-7" style="width:600px">
   <h1>{{ object|yesno:"Update,Create" }} dish country type</h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
@@ -9,4 +10,5 @@
 
     <input type="submit" value="Submit" class="btn btn-primary">
   </form>
+</div>
 {% endblock %}

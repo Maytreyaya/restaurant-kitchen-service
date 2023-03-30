@@ -1,7 +1,8 @@
-{% extends "base.html" %}
+{% extends "bassse.html" %}
 {% load crispy_forms_filters %}
 
 {% block content %}
+<div class="mx-auto p-7" style="width:600px">
   <h2>
     Countries Kitchens List
   </h2>
@@ -10,10 +11,10 @@
       Create
     </a>
   </h5>
-{#  <form action="" method="get" class="form-inline">#}
-{#    {{ search_form|crispy }}#}
-{#  <input type="submit" value="🔎">#}
-{#  </form>#}
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+  <input class="btn-sm btn-light p-1" type="submit" value="🔎">
+  </form>
 
   {% if dish_type_list %}
     <ul>
@@ -26,4 +27,7 @@
   {% else %}
     <p>There are no dish types</p>
   {% endif %}
+    {% include "includes/pagination.html" %}
+
+</div>
 {% endblock %}

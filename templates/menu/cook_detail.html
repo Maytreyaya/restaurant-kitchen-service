@@ -1,6 +1,7 @@
-{% extends "base.html" %}
+{% extends "bassse.html" %}
 
 {% block content %}
+  <div class="mx-auto p-7" style="width:600px">
   <h1>
     {{ cook.username }} | {{ cook.first_name }} {{ cook.last_name }}
     <a href="{% url 'menu:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">
@@ -19,4 +20,5 @@
       {% endfor %}
 
   </ul>
+  </div>
 {% endblock %}
