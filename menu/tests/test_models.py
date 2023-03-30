@@ -12,7 +12,7 @@ class TestModels(TestCase):
 
         self.assertEqual(str(dish), f"{dish.name} | {dish.price}")
 
-    def test_create_cook_with(self) -> None:
+    def test_create_cook_with_years(self) -> None:
         username = "Testill"
         password = "pastest"
         years = "5"

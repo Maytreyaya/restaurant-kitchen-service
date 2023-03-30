@@ -1,11 +1,17 @@
+from django.db.models import QuerySet
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import DishForm, CookSearchForm, DishSearchForm, CookCreationForm, CookUpdateYearsForm, DishTypeSearchForm
+from .forms import (DishForm,
+                    CookSearchForm,
+                    DishSearchForm,
+                    CookCreationForm,
+                    CookUpdateYearsForm,
+                    DishTypeSearchForm)
 from .models import Dish, DishType, Cook
 
 
@@ -34,7 +40,7 @@ class DishListView(generic.ListView):
     model = Dish
     paginate_by = 7
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(DishListView, self).get_context_data(**kwargs)
 
         name = self.request.GET.get("name", "")
@@ -45,7 +51,7 @@ class DishListView(generic.ListView):
 
         return context
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         form = DishSearchForm(self.request.GET)
         if form.is_valid():
             return Dish.objects.select_related("dish_type").filter(
@@ -80,7 +86,7 @@ class DishTypeListView(generic.ListView):
     context_object_name = "dish_type_list"
     template_name = "menu/dish_type_list.html"
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(DishTypeListView, self).get_context_data(**kwargs)
 
         name = self.request.GET.get("name", "")
@@ -91,7 +97,7 @@ class DishTypeListView(generic.ListView):
 
         return context
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         form = DishTypeSearchForm(self.request.GET)
         if form.is_valid():
             return DishType.objects.filter(
@@ -129,7 +135,7 @@ class CookListView(generic.ListView):
     model = Cook
     paginate_by = 5
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(CookListView, self).get_context_data(**kwargs)
 
         username = self.request.GET.get("username", "")
@@ -140,7 +146,7 @@ class CookListView(generic.ListView):
 
         return context
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         form = CookSearchForm(self.request.GET)
         if form.is_valid():
             return Cook.objects.filter(
@@ -170,7 +176,7 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 @login_required
-def toggle_assign_to_dish(request, pk):
+def toggle_assign_to_dish(request, pk) -> HttpResponse:
     cook = Cook.objects.get(id=request.user.id)
     if (
         Dish.objects.get(id=pk) in cook.dishes.all()
@@ -179,9 +185,4 @@ def toggle_assign_to_dish(request, pk):
     else:
         cook.dishes.add(pk)
     return HttpResponseRedirect(reverse_lazy("menu:dish-detail", args=[pk]))
-
-
-
-
-
 

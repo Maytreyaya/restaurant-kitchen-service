@@ -36,7 +36,7 @@ class PrivateDishTests(TestCase):
         )
         self.assertTemplateUsed(res, "menu/dish_list.html")
 
-    def test_search_car(self) -> None:
+    def test_search_dish(self) -> None:
         key = "e"
         response = self.client.get(reverse("menu:dish-list") + f"?name={key}")
 
@@ -73,7 +73,7 @@ class PrivateCookTests(TestCase):
         )
         self.assertTemplateUsed(res, "menu/cook_list.html")
 
-    def test_search_driver_with_username(self) -> None:
+    def test_search_cook_with_username(self) -> None:
         key = "mr"
         response = self.client.get(reverse("menu:cook-list")
                                    + f"?username={key}")
@@ -97,7 +97,7 @@ class PrivateDishTypeTests(TestCase):
         DishType.objects.create(name="Italy")
         DishType.objects.create(name="Japan")
 
-    def test_get_dish_type_list(self):
+    def test_get_dish_type_list(self) -> None:
         res = self.client.get(DISH_TYPE_URL)
 
         dishes = DishType.objects.all()

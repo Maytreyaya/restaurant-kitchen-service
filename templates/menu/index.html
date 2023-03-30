@@ -29,11 +29,8 @@
 </head>
 <body class="presentation-page bg-gray-200">
 
-{#  {% include 'includes/navigation.html' %}#}
-
   <header class="header-2">
-    <div class="page-header min-vh-80 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/img.png')">
-{#      <span class="mask bg-gradient-primary opacity-4"></span>#}
+    <div class="page-header min-vh-85 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/img.png')">
       <div class="container">
         <div class="row">
           <div class="col-lg-7 text-center mx-auto">
@@ -123,12 +120,9 @@
       };
     }
   </script>
+    </div>
 </body>
 
 </html>
-
-    <p>You have visited this page
-        {{ num_visits }} time{{ num_visits|pluralize }}.
-    </p>
 
 {% endblock %}
