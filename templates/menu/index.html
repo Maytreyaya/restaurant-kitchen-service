@@ -32,8 +32,8 @@
 {#  {% include 'includes/navigation.html' %}#}
 
   <header class="header-2">
-    <div class="page-header min-vh-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')">
-      <span class="mask bg-gradient-primary opacity-4"></span>
+    <div class="page-header min-vh-80 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/img.png')">
+{#      <span class="mask bg-gradient-primary opacity-4"></span>#}
       <div class="container">
         <div class="row">
           <div class="col-lg-7 text-center mx-auto">
@@ -126,16 +126,9 @@
 </body>
 
 </html>
-{#    <h1>Restaurant Home</h1>#}
-{#    <p>Welcome to Best Restaurant Ever!</p>#}
-{#    <ul>#}
-{#        <li><strong>Cooks:</strong> {{ num_cookers }}</li>#}
-{#        <li><strong>Dishes:</strong> {{ num_dishes }}</li>#}
-{#        <li><strong>Dish Types:</strong> {{ num_dish_types }}</li>#}
-{#    </ul>#}
-{##}
-{#    <p>You have visited this page#}
-{#        {{ num_visits }} time{{ num_visits|pluralize }}.#}
-{#    </p>#}
+
+    <p>You have visited this page
+        {{ num_visits }} time{{ num_visits|pluralize }}.
+    </p>
 
 {% endblock %}

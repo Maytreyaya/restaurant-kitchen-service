@@ -33,12 +33,6 @@
                       <a href="{% url 'menu:dish_type_list' %}" class="dropdown-item border-radius-md">
                         <span>Countries of our meals</span>
                       </a>
-                      <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1 mt-3">
-                        Account
-                      </h6>
-                      <a href="{% url 'login' %}" class="dropdown-item border-radius-md">
-                        <span>Sign In</span>
-                      </a>
                     </div>
                   </div>
                 </li>
@@ -46,9 +40,18 @@
                 {% if request.user.is_authenticated %}
                   <li class="nav-item ms-lg-auto">
                     <a class="nav-link nav-link-icon me-2"
-                      href="{% url 'logout' %}">
+                      href="{% url 'logout' %}">{{ user.get_username }}
                       <i class="fa fa-sign-out me-1"></i>
                       <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign OUT">Logout</p>
+                    </a>
+                  </li>
+                {% endif %}
+                {% if not request.user.is_authenticated %}
+                  <li class="nav-item ms-lg-auto">
+                    <a class="nav-link nav-link-icon me-2"
+                      href="{% url 'login' %}">
+                      <i class="fa fa-sign-out me-1"></i>
+                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Login">Login</p>
                     </a>
                   </li>
                 {% endif %}

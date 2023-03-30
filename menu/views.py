@@ -60,7 +60,7 @@ class DishDetailView(LoginRequiredMixin, generic.DetailView):
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
     form_class = DishForm
-    success_url = reverse_lazy("menu:dish_list")
+    success_url = reverse_lazy("menu:dish-list")
 
 
 class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -71,7 +71,7 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Dish
-    success_url = reverse_lazy("menu:dish_list")
+    success_url = reverse_lazy("menu:dish-list")
 
 
 class DishTypeListView(generic.ListView):
