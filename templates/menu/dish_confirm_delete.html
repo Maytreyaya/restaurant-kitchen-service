@@ -7,7 +7,7 @@
     {% csrf_token %}
 
     <input type="submit" value="Yes" class="btn btn-danger">
-    <a class="btn btn-success" href="{% url 'menu:dish-list' %}">No!</a>
+    <a class="btn btn-success" href="{% url 'menu:dish-detail' pk=dish.id %}">No!</a>
   </form>
 </div>
 {% endblock %}
