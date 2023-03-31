@@ -22,13 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
-SECRET_KEY = "+ux_a_czr+ykj7uc*(8cl#)ij25if+@uehh+f=r7wt%_yxif$$"
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
-# DEBUG = False
+# DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = False
 
 
 ALLOWED_HOSTS = ["127.0.0.1", "restaurant-kitchen-9phr.onrender.com"]
