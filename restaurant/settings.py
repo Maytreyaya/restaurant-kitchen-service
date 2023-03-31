@@ -31,7 +31,7 @@ DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 # DEBUG = False
 
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "restaurant-kitchen-9phr.onrender.com"]
 
 # INTERNAL_IPS = [
 #     "127.0.0.1",
