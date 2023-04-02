@@ -23,7 +23,6 @@ from menu.views import index
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("menu.urls", namespace="menu")),
-    path("__debug__/", include("debug_toolbar.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/profile/", index),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
