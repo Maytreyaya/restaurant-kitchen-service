@@ -6,9 +6,9 @@ This project was created to help restaurant with managing dishes and cookers.
 
 
 ## Credential for testing:
-`username` = user
+username = `user`
 
-`password` = usercango56
+password = `usercango56`
 
 ## Installing / Getting started
 
@@ -27,15 +27,15 @@ python manage.py runserver
 
 ### Features
 
-#Authentication
+- Authentication
 
-#Add dishes to Menu
+- Add dishes to Menu
 
-#Delete dishes
+- Delete dishes
 
-#Create New Cookers
+- Create New Cookers
 
-#Delete Cookers
+- Delete Cookers
 
 
 ### Demo
