@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="mx-auto p-7" style="width:600px">
+  <h1>
+     Menu
+  </h1>
+  <h5>
+    <a href="{% url 'menu:dish-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h5>
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn-sm btn-light p-1" type="submit" value="🔎">
+  </form>
+
+  {% if dish_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Type</th>
+      </tr>
+
+      {% for dish in dish_list %}
+        <tr>
+          <td>
+            <a href="{% url 'menu:dish-detail' pk=dish.id%}">{{ dish.name }}</a>
+          </td>
+          <td>
+              {{ dish.price }}
+          </td>
+          <td>
+              {{ dish.dish_type }}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no dishes available.</p>
+  {% endif %}
+    {% include "includes/pagination.html" %}
+
+  </div>
+
+{% endblock %}

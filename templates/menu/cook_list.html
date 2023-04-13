@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="mx-auto p-7" style="width:600px">
+  <h1>
+     List of Cookers
+  </h1>
+  <h5>
+    <a href="{% url 'menu:cook-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h5>
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn-sm btn-light p-1" type="submit" value="🔎">
+  </form>
+
+  {% if cook_list %}
+    <table class="table">
+      <tr>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+
+      {% for cook in cook_list %}
+        <tr>
+          <td>
+            <a href="{% url 'menu:cook-detail' pk=cook.id%}">{{ cook.username }}</a>
+          </td>
+          <td>
+              {{ cook.first_name }}
+          </td>
+          <td>
+              {{ cook.last_name }}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no cooks available.</p>
+  {% endif %}
+    {% include "includes/pagination.html" %}
+
+  </div>
+{% endblock %}

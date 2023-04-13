@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="mx-auto p-7 w-50" style="width:600px">
+  <h1>
+    {{ dish.name }}
+    <a href="{% url 'menu:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'menu:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+  ----------------------
+  <strong><i><p>Traditional country food: {{ dish.dish_type }}</p></i></strong>
+  ----------------------
+  <h1>
+  <h5><small>{{ dish.description }}</small></h5>
+  --------------------------------------------------------------------------------
+    <h3>Cookers
+      {% if dish in user.dishes.all %}
+      <a href="{% url 'menu:assign-to-dish' pk=dish.id %}" class="btn btn-danger link-to-page inline-related">
+        Don't cook this dish
+      </a>
+    {% else %}
+      <a href="{% url 'menu:assign-to-dish' pk=dish.id %}" class="btn btn-success link-to-page">
+        Assign me to cook this dish
+      </a>
+    {% endif %}
+    </h3>
+
+  </h1>
+  <hr>
+  <ul>
+    {% for cook in dish.cookers.all %}
+      <li>{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
+    {% endfor %}
+  </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+<div class="mx-auto p-7 w-50" style="width:600px">
+  <h2>
+    List of traditional cuisines
+  </h2>
+  <h5>
+    <a href="{% url 'menu:dish-type-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h5>
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+  <input class="btn-sm btn-light p-1" type="submit" value="🔎">
+  </form>
+
+  {% if dish_type_list %}
+    <ul>
+      {% for dish_type in dish_type_list %}
+        <li>
+          <a href="{% url 'menu:dish_type_detail' pk=dish_type.id %}">{{ dish_type.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no dish types</p>
+  {% endif %}
+    {% include "includes/pagination.html" %}
+
+</div>
+{% endblock %}
